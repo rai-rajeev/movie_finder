@@ -1,11 +1,13 @@
-//import 'dart:html';
 
+
+import 'package:find_movies/appview/main.dart';
 import 'package:flutter/material.dart';
 import 'package:find_movies/appview/homepage.dart';
 import 'package:find_movies/authentication/resetpassword.dart';
 import 'package:find_movies/authentication/signuppage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-bool RememberMe=false;
+import 'package:shared_preferences/shared_preferences.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
   static const route='/';
@@ -126,9 +128,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     value: RememberMe,
                     side: const BorderSide(
                         color:Colors.grey, ),
-                    onChanged: (newvalue){
+                    onChanged: (value){
+                      SharedPreferences.getInstance().then(
+                          (prefs){
+                            prefs.setBool("remember_me", value!);
+                          }
+                      );
                         setState(() {
-                          RememberMe= newvalue ?? false;
+                          RememberMe= value!;
                         });
 
 

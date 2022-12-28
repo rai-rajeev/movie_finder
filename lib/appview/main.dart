@@ -6,21 +6,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
-
+import'package:shared_preferences/shared_preferences.dart';
 import 'homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../firebase/firebase_options.dart';
+bool RememberMe=false;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  SharedPreferences prefs=await SharedPreferences.getInstance();
+  RememberMe=prefs.getBool("remember_me")?? false;
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -44,7 +47,7 @@ class MyApp extends StatelessWidget {
         home: StreamBuilder(
           stream:FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
-            return  (snapshot.hasData && RememberMe)?HomePage():LoginScreen();
+            return  (snapshot.hasData && RememberMe )?HomePage():LoginScreen();
           }
         ),
 

@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:find_movies/authentication/loginpage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appview/homepage.dart';
+import '../appview/main.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -117,7 +119,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: ()async{
                       String emailAddress=_controller3.text;
                       String password=_controller4.text;
-                      RememberMe=true;
+                      SharedPreferences.getInstance().then(
+                              (prefs){
+                            prefs.setBool("remember_me", true);
+                          }
+                      );
+                      setState(() {
+                        RememberMe=true;
+                      });
                       try{
                         final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                           email: emailAddress,
