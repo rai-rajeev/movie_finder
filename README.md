@@ -7,11 +7,11 @@
  + Reset password
  + Remember Me feature
 ## Key features
-+ Popular movies Recommendation
-+ Top rated movies Recommendation
-+ Now playing movies Recommendation
-+ Search movies functionality
-+ Movies description (including genre )
++  Display Popular movies 
++  Display Top rated movies 
++ Display Now playing movies 
++  Movies search functionality
++ Movies details (including genre )
 # Tech Stack
 **Client:** FLutter
 
