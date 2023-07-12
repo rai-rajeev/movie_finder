@@ -179,7 +179,9 @@ class InfoScreen extends StatelessWidget {
 
      }
      else if(searchmov!=null){
+
        pop=searchmov!.results[index].originalLanguage?.name.toString()??' not known';
+
 
      }
      return pop;
