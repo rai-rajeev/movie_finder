@@ -30,7 +30,9 @@
 ![b0457fcc-02a9-4c95-b9cc-648c69cea012](https://github.com/rai-rajeev/movie_finder/assets/106883666/404fd899-7d3c-4598-b2ee-5b2f0cc92180)
 
 # Installation
-To get started with find movies, follow these steps:
+ To get started with find movies, follow these steps:
+1. Ensure that you have Flutter and Dart SDK installed on your machine. For installation instructions, refer to the official [Flutter documentation](https://docs.flutter.dev/get-started/install).
+
 1. Clone the repository:
    
     ```bash
