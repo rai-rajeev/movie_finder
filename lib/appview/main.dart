@@ -5,7 +5,7 @@ import 'package:find_movies/authentication/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
+import 'splash.dart';
 import'package:shared_preferences/shared_preferences.dart';
 import 'homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,12 +44,7 @@ class MyApp extends StatelessWidget {
         ),
 
 
-        home: StreamBuilder(
-          stream:FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            return  (snapshot.hasData && RememberMe )?HomePage():LoginScreen();
-          }
-        ),
+        home:SplashPage(),
 
 
 

@@ -50,10 +50,13 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Scaffold(
         backgroundColor: Colors.grey[900],
         body: Center(
-          child: ListView(
+          child: Column(
             children: [
               Container(
-                width: 200,
+                height: 30,
+                color: Colors.white60,
+              ),
+              Container(
                 color: Colors.white60,
                 padding: const EdgeInsets.all(10),
                 child: Row(
@@ -64,12 +67,13 @@ class _SearchScreenState extends State<SearchScreen> {
                             Navigator.pop((context));
 
                         },
-                        icon: Icon(Icons.arrow_back,
-                        size: 36,),
+                        icon: const Icon(Icons.arrow_back,
+                        size: 30,),
                     color: Colors.grey[50],
                     ),
                     Container(
                       width: 270,
+
                       color: Colors.grey,
                       child: Builder(
                         builder: (context) {
@@ -117,7 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       width: 5,
                     ),
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.grey,
                         shape: BoxShape.circle
                       ),
@@ -142,68 +146,54 @@ class _SearchScreenState extends State<SearchScreen> {
                 )
 
               ),
-              Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-                  child:Visibility(
-                    visible: _Isloaded,
-                    replacement: Center(
-                      child: Container(),
-                    ),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          Padding(padding:
-                          const EdgeInsets.symmetric(vertical: 10,horizontal: 15)
-                          ,child:Text("Result found: ${_searchmovies?.results.length}",
-                            style: const TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white
-                            ),),
-                          ),
-                          SizedBox(
-                            height: 800,
-                            child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              itemCount: _searchmovies?.results.length,
-                                itemBuilder: (context,index){
-                                return Column(
-                                  children: [
+              Visibility(
+                visible: _Isloaded,
+                replacement: Center(
+                  child: Container(),
+                ),
+                child: Expanded(
+                  child: GridView.builder(
+                    itemCount: _searchmovies?.results.length,
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                        childAspectRatio: .5
 
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: SizedBox(
+                  ), itemBuilder: ((context,index)=>Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
 
-                                        child: Image(
-
-                                            image: NetworkImage((_searchmovies!.results[index].posterPath!='')?"https://image.tmdb.org/t/p/w600_and_h900_bestv2${_searchmovies!.results[index].posterPath}":"https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg")
-                                            ,height: 300,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 200,
-                                      child: TextButton(
-                                        onPressed:()
-                                        {Navigator.push(context,
-                                            MaterialPageRoute(builder: (context)=>InfoScreen(index: index,searchmov: _searchmovies,genres: genereMap,)));},
-                                          child: Text(_searchmovies!.results[index].title!,
-                                          style: const TextStyle(
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                          textAlign: TextAlign.center,)),
-                                    ),
-                                    const SizedBox(height: 10,)
-
-                                  ],
-                                );
-                                }),
-                          ),
-                        ],
+                      Flexible(
+                        child: Image(
+                         fit:BoxFit.cover,
+                          image: NetworkImage((_searchmovies!.results[index].posterPath!='')?
+                          "https://image.tmdb.org/t/p/w600_and_h900_bestv2${_searchmovies!.results[index].posterPath}"
+                              :"https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg"),
+                        ),
                       ),
-                    ),
-                  ) ,
+                      SizedBox(
+                        height: 100,
+                        child: TextButton(
+                            onPressed:()
+                            {Navigator.push(context,
+                                MaterialPageRoute(builder: (context)=>InfoScreen(index: index,searchmov: _searchmovies,genres: genereMap,)));},
+                            child: Text(_searchmovies!.results[index].title!,
+                              style:  const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w300,
+
+
+                              ),
+                              maxLines:1 ,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,)),
+                      ),
+
+
+                    ],
+                  ))),
+                ),
               ),
 
             ],

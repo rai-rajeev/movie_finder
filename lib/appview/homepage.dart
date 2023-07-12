@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.w500,
                           fontSize: 26
                         ),),
-                        SizedBox(width: 50,),
+                        const SizedBox(width: 50,),
 
                         PopupMenuButton(
                             itemBuilder: (context){
@@ -180,8 +180,8 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.pushReplacement((context),
                                       MaterialPageRoute(builder: (context)=>LoginScreen()));
                                 },
-                                child:Row(
-                                  children: const [
+                                child:const Row(
+                                  children: [
                                     Icon(Icons.logout),
                                     SizedBox(width: 6,),
                                     Text('Logout')

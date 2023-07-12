@@ -161,6 +161,9 @@ class InfoScreen extends StatelessWidget {
        pop=searchmov!.results[index].releaseDate!.toString();
 
      }
+     if(pop.length<10){
+       return 'not  known';
+     }
      return pop.substring(0,10);
    }
    String lang(){
@@ -176,7 +179,7 @@ class InfoScreen extends StatelessWidget {
 
      }
      else if(searchmov!=null){
-       pop=searchmov!.results[index].originalLanguage.toString();
+       pop=searchmov!.results[index].originalLanguage?.name.toString()??' not known';
 
      }
      return pop;
@@ -209,7 +212,7 @@ class InfoScreen extends StatelessWidget {
       }
     }
     if(nok.isEmpty){
-      nok.add('Non Know');
+      nok.add('Not Know');
     }
     return nok;
    }
@@ -238,106 +241,230 @@ class InfoScreen extends StatelessWidget {
         child: ListView(
 
           children: [
+            const SizedBox(height: 10,),
 
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image(image: NetworkImage(uri()),
-              height:300,
-              ),
+            Image(image: NetworkImage(uri()),
+            height:300,
             ),
+          const SizedBox(height: 10,),
+          Container(
+            height: 0.5,
+            color: Colors.white,
+          ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
 
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 10),
-              child: Text('Release On: ${reldate()}',
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(' Release on',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    Text('${reldate() }  ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey[50]
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                      child: Text(' Genre',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 250,
+                      child: Text('${gen()}',
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        maxLines: null,
+                      ),
+                    ),
+
+                  ],
+                ),
+
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(' Rating',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Text('${rating()}       ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey[50]
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(' Rated By',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Text('${rateby()} people  ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey[50]
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(' Popularity',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Text('${popularity()}   ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey[50]
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(' Adult Film',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      Text('${YesNo()} ',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(' Original language',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.grey[50]
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    Text('${lang()}  ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey[50]
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 0.5,
+                  color: Colors.white,
+                ),
+
+              ],
+            ),
+            SizedBox(height: 5,),
+            Text('DESCRIPTION: ',
+              style: TextStyle(
+                  fontSize: 20,
+
+                  color: Colors.grey[50]
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Container(padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Text(description(),
                 style: TextStyle(
                     fontSize: 20,
 
                     color: Colors.grey[50]
                 ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('Genre: ${gen()}',
-                style: TextStyle(
-                    fontSize: 20,
 
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text('Rating: ${rating()}',
-                style: TextStyle(
-                    fontSize: 20,
-
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text('Rated By: ${rateby()} peolple',
-                style: TextStyle(
-                    fontSize: 20,
-
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text('Popularity : ${popularity()}',
-                style: TextStyle(
-                    fontSize: 20,
-
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text('Adult Film: ${YesNo()}',
-                style: TextStyle(
-                    fontSize: 20,
-
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-
-
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text('Original language: ${lang()}',
-                style: TextStyle(
-                    fontSize: 20,
-
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Text('DESCRIPTION: ${description()}',
-                style: TextStyle(
-                    fontSize: 20,
-
-                    color: Colors.grey[50]
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
 
 
 
