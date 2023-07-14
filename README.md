@@ -48,13 +48,26 @@
    ```bash
    flutter run
 # Demo
+https://drive.google.com/file/d/1_s4RultAjLc6beFC38xZBIVhOv8xNieW/view?usp=sharing
 # Working of the App
-#Home Screen
+
+If you have not logged in yet, the login screen will appear, prompting you to enter your email and password to continue. If you don't have an account, there is a **signup** button located at the bottom right of the screen. Tapping on the signup button will direct you to the signup screen where you can enter your email address and create a password to complete the signup process.
+
+On the login screen, there are additional options available. One of them is the **Forgot passwor** option, which helps you reset your password if you have forgotten it. This typically involves a password reset link being sent to your registered email address, allowing you to create a new password.
+
+Another option is the **Remember m** checkbox, which allows you to maintain your login state within the app. Enabling this option will keep you logged in even after closing and reopening the app, so you won't have to enter your credentials every time.
+
+Once you successfully login, you will be directed to the home screen of the app.
+# Home Screen
+In the user interface you described, there is a search icon on the top left corner that leads to a search screen for movies. On the top right corner, there is a pop-up menu button that includes an option to log out.
+Below the menu buttons, there are three horizontally scrollable lists of movies: Trending, Top Rated, and Now Playing. 
+ There are three different horizontally scrollable list of movies  namely Trending ,Top rated and Now playing Movies 
  ## Trending Movies
+  Displays Trending 
  ## Top Rated Movies
  ## Now Playing
- # search Movies Screen
- # Movie Information Screen
+ # search movies screen
+ # Movie details screen
  # Author
  + [rai-rajeev](https://github.com/rai-rajeev)
 
