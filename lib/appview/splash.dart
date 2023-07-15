@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../authentication/loginpage.dart';
 import 'homepage.dart';
-import 'main.dart';
+import '../main.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
              builder: (context) => StreamBuilder(
                  stream:FirebaseAuth.instance.authStateChanges(),
                  builder: (context, snapshot) {
-                   return  (snapshot.hasData && RememberMe )?HomePage():LoginScreen();
+                   return  (snapshot.hasData && rememberMe )?HomePage():LoginScreen();
                  }
              )
 

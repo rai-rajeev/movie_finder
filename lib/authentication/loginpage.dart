@@ -1,6 +1,6 @@
 
 
-import 'package:find_movies/appview/main.dart';
+import 'package:find_movies/main.dart';
 import 'package:flutter/material.dart';
 import 'package:find_movies/appview/homepage.dart';
 import 'package:find_movies/authentication/resetpassword.dart';
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Checkbox(
                     checkColor: Colors.green,
-                    value: RememberMe,
+                    value: rememberMe,
                     side: const BorderSide(
                         color:Colors.grey, ),
                     onChanged: (value){
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                       );
                         setState(() {
-                          RememberMe= value!;
+                          rememberMe= value!;
                         });
 
 

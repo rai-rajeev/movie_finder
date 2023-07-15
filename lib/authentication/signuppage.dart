@@ -4,7 +4,7 @@ import 'package:find_movies/authentication/loginpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../appview/homepage.dart';
-import '../appview/main.dart';
+import '../main.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -125,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           }
                       );
                       setState(() {
-                        RememberMe=true;
+                        rememberMe=true;
                       });
                       try{
                         final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -134,7 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         );
                         Navigator.pushAndRemoveUntil((context),
 
-                            MaterialPageRoute(builder: (context)=>HomePage()),
+                            MaterialPageRoute(builder: (context)=>const HomePage()),
                             ModalRoute.withName(LoginScreen.route)).then((value){
                           _controller3.clear;
                           _controller4.clear;
@@ -154,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                             onPressed: (){
                                               Navigator.of(context,rootNavigator: true).pop();
                                             },
-                                            child: Text('OK'));
+                                            child: const Text('OK'));
                                       }
                                   )
                                 ],
@@ -164,7 +164,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         showDialog(context: (context), builder:(context) {
                           return AlertDialog(
 
-                            content: Text('${e}'),
+                            content: Text('$e'),
                             actions: [
                               Builder(
                                   builder: (context) {

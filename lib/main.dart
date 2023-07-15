@@ -1,16 +1,13 @@
 
 
-import 'package:find_movies/authentication/loginpage.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'splash.dart';
+import 'appview/splash.dart';
 import'package:shared_preferences/shared_preferences.dart';
-import 'homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '../firebase/firebase_options.dart';
-bool RememberMe=false;
+import 'firebase/firebase_options.dart';
+bool rememberMe=false;
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +15,7 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   SharedPreferences prefs=await SharedPreferences.getInstance();
-  RememberMe=prefs.getBool("remember_me")?? false;
+  rememberMe=prefs.getBool("remember_me")?? false;
   runApp( const MyApp());
 }
 
