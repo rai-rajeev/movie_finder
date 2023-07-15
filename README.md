@@ -47,6 +47,8 @@
 4. Run the app:
    ```bash
    flutter run
+# Download Apk
+https://drive.google.com/file/d/1wm7DeEAtWgw8b83DZnGfPZgJEpLDzCQq/view?usp=sharing
 # Demo
 https://drive.google.com/file/d/1_s4RultAjLc6beFC38xZBIVhOv8xNieW/view?usp=sharing
 # Working of the App
